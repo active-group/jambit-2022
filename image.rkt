@@ -121,7 +121,7 @@ class C {
 ; Bildes bestimmt
   
 ; Eine Uhrzeit besteht aus / hat folgende Eigenschaften:
-; - Stunde
+; - Stunde - UND -
 ; - Minute
 ; zusammengesetzten Daten
 (define-record time ; Signatur
