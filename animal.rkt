@@ -140,5 +140,6 @@ class Dillo {
   (lambda (animal)
     (cond
       ((dillo? animal) (run-over-dillo animal))
-      ((parrot? parrot) (run-over-parrot animal)))))
- 
+      ((parrot? animal) (run-over-parrot animal)))))
+
+; animal: Gemischte Daten, jeder Fall zusammengesetzte Daten
