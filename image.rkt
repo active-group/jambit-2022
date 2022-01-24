@@ -20,13 +20,34 @@
  (beside circle1 square1))
 
 ; Abstraktion
+
+; Konstruktionsanleitung
+
+; Kurzbeschreibung:
+; Quadratisches Musters aus 2 Kacheln zusammensetzen
+
+; Signatur(deklaration):
+(: tile (image image -> image))
+
+; Testfälle
+(check-expect (tile star1 circle1)
+              (above
+               (beside star1 circle1)
+               (beside circle1 star1)))
+
+; Gerüst (ohne Nachdenken!)
+#;(define tile
+  (lambda (image1 image2)
+    ...))
+
+; Funktionsdefinition
 (define tile
   (lambda (image1 image2)
     (above
      (beside image1 image2)
      (beside image2 image1))))
 
-(tile star1 circle1)
+;(tile star1 circle1)
 
 #|
 class C {
@@ -44,4 +65,20 @@ class C {
 
   ... C.m(23) ...
 |#
+
+; Datenanalyse
+; "Sind Haustiere niedlich?"
+
+; Datendefinition
+; Ein Haustier ist eins der folgenden:
+; - Hund - ODER -
+; - Katze - ODER -
+; - Schlange
+; Fallunterscheidung
+; hier Spezialfall: Aufzählung
+
+; -> Code mit Signatur
+(define pet
+  (signature (enum "dog" "cat" "snake")))
+
 
