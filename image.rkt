@@ -28,3 +28,20 @@
 
 (tile star1 circle1)
 
+#|
+class C {
+  // Wert einer Variable ist eine Speicherzelle
+  static int m(int x) {
+     ...
+     x
+     ...
+     // Inhalt der Speicherzelle wird ausgetauscht
+     x = x + 1;
+     ...
+     x
+     ...
+  }
+
+  ... C.m(23) ...
+|#
+
