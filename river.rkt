@@ -57,10 +57,12 @@
 (define flows-from?
   (lambda (river location)
     (cond
-      ((creek? river) ... (creek-origin river) ...)
+      ((creek? river)
+       (string=? location (creek-origin river)))
       ((confluence? river)
-       ...
-       (confluence-location river)
-       (flows-from? (confluence-main-stem river) location)
-       (flows-from? (confluence-tributary river) location)
-       ...))))
+       (or
+        (string=? location (confluence-location river))
+        ; Fließt Wasser von location in den Hauptzweig?
+        (flows-from? (confluence-main-stem river) location)
+        ; Fließt Wasser von location in den Nebenzweig?
+        (flows-from? (confluence-tributary river) location))))))
