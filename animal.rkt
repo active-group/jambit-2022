@@ -20,3 +20,35 @@
 (define dillo1 (make-dillo #t 10))
 ; totes Gürteltier, 8kg
 (define dillo2 (make-dillo #f 8))
+
+#|
+class Dillo {
+  bool isAlive;
+  double weight;
+
+  void runOver() {
+    this.isAlive = false;
+  }
+}
+|#
+
+; Gürteltier überfahren
+(: run-over-dillo (dillo -> dillo))
+
+(check-expect (run-over-dillo dillo1)
+              (make-dillo #f 10))
+(check-expect (run-over-dillo dillo2)
+              dillo2)
+
+; Schablone:
+#;(define run-over-dillo
+  (lambda (dillo)
+    (make-dillo ... ...)
+    (dillo-alive? dillo)
+    (dillo-weight dillo)
+    
+    ...))
+
+(define run-over-dillo
+  (lambda (dillo)
+    (make-dillo #f (dillo-weight dillo))))
