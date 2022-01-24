@@ -117,5 +117,6 @@ class C {
       ("cat" #t)
       ("snake" #f))))
 
-
+; Schreibe eine Funktion, die das Format eines
+; Bildes bestimmt
   
