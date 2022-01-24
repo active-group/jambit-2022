@@ -120,3 +120,20 @@ class C {
 ; Schreibe eine Funktion, die das Format eines
 ; Bildes bestimmt
   
+; Eine Uhrzeit besteht aus / hat folgende Eigenschaften:
+; - Stunde
+; - Minute
+; zusammengesetzten Daten
+(define-record time ; Signatur
+  make-time ; Konstruktor
+  (time-hour natural) ; Selektor
+  (time-minute natural))
+
+; 12:24 Uhr
+(define time1 (make-time 12 24))
+; 14:12 Uhr
+(define time2 (make-time 14 12))
+
+(: make-time (natural natural -> time))
+(: time-hour (time -> natural))
+(: time-minute (time -> natural))
