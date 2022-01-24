@@ -81,3 +81,12 @@ class Dillo {
                   ((dillo-alive? dillo) (+ (dillo-weight dillo)
                                            amount))
                   (else (dillo-weight dillo))))))
+
+; lexikalische Bindung:
+; vom Vorkommen einer Variablen von innen nach außen suchen nach:
+; - define (wenn innerhalb von Klammern: "lokal")
+; - lambda
+; wenn das nicht klappt:
+; - Suche nach define "ganz außen" ("global")
+; wenn das nicht klappt:
+; - muß es eine importierte Bindung
