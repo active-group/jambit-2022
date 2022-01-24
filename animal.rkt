@@ -56,3 +56,4 @@ class Dillo {
 ; (cond ... (else ...))
 ; (and ...)
 ; (or ...)
+; 2 Booleans vergleichen: boolean=?
