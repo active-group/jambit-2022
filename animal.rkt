@@ -13,6 +13,8 @@
   (dillo-weight number))
 
 (: make-dillo (boolean number -> dillo))
+(: dillo-alive? (dillo -> boolean))
+(: dillo-weight (dillo -> number))
 
 ; lebendiges Gürteltier, 10kg
 (define dillo1 (make-dillo #t 10))
