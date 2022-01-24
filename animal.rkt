@@ -54,3 +54,5 @@ class Dillo {
     (make-dillo #f (dillo-weight dillo))))
 
 ; (cond ... (else ...))
+; (and ...)
+; (or ...)
