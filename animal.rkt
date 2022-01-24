@@ -126,7 +126,7 @@ class Dillo {
   (lambda (parrot)
     (make-parrot "" (parrot-weight parrot))))
 
-#|
+
 ; Tier überfahren
 (: run-over-animal (animal -> animal))
 
@@ -139,6 +139,6 @@ class Dillo {
 (define run-over-animal
   (lambda (animal)
     (cond
-      (... ...)
-      (... ...))))
-|# 
+      ((dillo? animal) (run-over-dillo animal))
+      ((parrot? parrot) (run-over-parrot animal)))))
+ 
