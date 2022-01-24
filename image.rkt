@@ -137,3 +137,23 @@ class C {
 (: make-time (natural natural -> time))
 (: time-hour (time -> natural))
 (: time-minute (time -> natural))
+
+; Minuten seit Mitternacht
+(: msm (time -> natural))
+
+(check-expect (msm time1) (+ (* 12 60) 24))
+(check-expect (msm time2) (+ (* 14 60) 12))
+
+; Schablone:
+#;(define msm
+  (lambda (time)
+    ...
+    (time-hour time)
+    (time-minute time)
+    ...))
+
+(define msm
+  (lambda (time)
+    (+ (* 60 (time-hour time))
+       (time-minute time))))
+
