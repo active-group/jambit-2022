@@ -41,6 +41,7 @@
 (check-expect (flows-from? neckar1 "Heimliswald") #t)
 (check-expect (flows-from? neckar1 "Rottweil") #t)
 (check-expect (flows-from? neckar1 "Epfendorf") #f)
+(check-expect (flows-from? neckar1 "Bielefeld") #f)
 
 ; Schablone
 #;(define flows-from?
@@ -66,3 +67,6 @@
         (flows-from? (confluence-main-stem river) location)
         ; Fließt Wasser von location in den Nebenzweig?
         (flows-from? (confluence-tributary river) location))))))
+
+; strikte Auswertung:
+; vor Aufruf einer Funktion werden alle Argumente ausgewertet
