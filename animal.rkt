@@ -143,3 +143,31 @@ class Dillo {
       ((parrot? animal) (run-over-parrot animal)))))
 
 ; animal: Gemischte Daten, jeder Fall zusammengesetzte Daten
+
+
+#|
+interface Animal {
+  Animal runOver();
+}
+class Dillo implements Animal {
+  Animal runOver() { ... }
+}
+class Parrot implements Animal {
+  Animal runOver() { ... }
+}
+
+interface Animal<R> {
+  R runOver();
+}
+class Dillo implements Animal<Dillo> {
+  Dillo runOver() { ... }
+}
+class Parrot implements Animal<Parrot> {
+  Parrot runOver() { ... }
+}
+
+
+abstract class Animal { ... }
+class Dillo extends Animal { ... }
+class Parrot extends { ... }
+|#
