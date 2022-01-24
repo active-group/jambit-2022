@@ -18,6 +18,7 @@
 
 (define eschach (make-creek "Heimliswald"))
 (define prim (make-creek "Dreifaltigkeitsberg"))
+(define schlichem (make-creek "Tieringen"))
 
 ; Ein Zusammentreffen hat folgende Eigenschaften:
 ; - Ort des Zusammenflusses
@@ -30,3 +31,36 @@
   (confluence-location string)
   (confluence-main-stem river)
   (confluence-tributary river))
+
+(define neckar1 (make-confluence "Rottweil" eschach prim))
+(define neckar2 (make-confluence "Epfendorf" neckar1 schlichem))
+
+; Fließt Wasser aus einem Ort durch Fluß?
+(: flows-from? (river string -> boolean))
+
+(check-expect (flows-from? neckar1 "Heimliswald") #t)
+(check-expect (flows-from? neckar1 "Rottweil") #t)
+(check-expect (flows-from? neckar1 "Epfendorf") #f)
+
+; Schablone
+#;(define flows-from?
+  (lambda (river location)
+    (cond
+      ((creek? river) ... (creek-origin river) ...)
+      ((confluence? river)
+       ...
+       (confluence-location river)
+       (flows-from? (confluence-main-stem river) location)
+       (flows-from? (confluence-tributary river) location)
+       ...))))
+
+(define flows-from?
+  (lambda (river location)
+    (cond
+      ((creek? river) ... (creek-origin river) ...)
+      ((confluence? river)
+       ...
+       (confluence-location river)
+       (flows-from? (confluence-main-stem river) location)
+       (flows-from? (confluence-tributary river) location)
+       ...))))
