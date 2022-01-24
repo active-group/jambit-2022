@@ -5,3 +5,5 @@
 ; Es gibt Seife, Shampoo und Duschgel.
 ; bei Seife: pH-Wert
 ; bei Shampoo: Farbe und Haartyp
+
+; Bonus: Mixtur aus zwei Duschprodukten, mit prozentualen Anteilen
