@@ -6,6 +6,8 @@
 ; - Bach, kommt aus einer Quelle - ODER -
 ; - Zusammentreffen, fließt aus zwei Flüssen zusammen
 ; Fallunterscheidung; gemischte Daten
+(define river
+  (signature (mixed creek confluence)))
 
 ; Ein Bach hat folgende Eigenschaften:
 ; - Ursprungsort
@@ -16,3 +18,15 @@
 
 (define eschach (make-creek "Heimliswald"))
 (define prim (make-creek "Dreifaltigkeitsberg"))
+
+; Ein Zusammentreffen hat folgende Eigenschaften:
+; - Ort des Zusammenflusses
+; - Hauptfluss
+;        ^^^^^ Selbstbezug
+; - Nebenfluss
+(define-record confluence
+  make-confluence
+  confluence?
+  (confluence-location string)
+  (confluence-main-stem river)
+  (confluence-tributary river))
