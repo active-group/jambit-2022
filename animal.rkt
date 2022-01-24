@@ -1,7 +1,9 @@
 ;; Die ersten drei Zeilen dieser Datei wurden von DrRacket eingefügt. Sie enthalten Metadaten
 ;; über die Sprachebene dieser Datei in einer Form, die DrRacket verarbeiten kann.
 #reader(lib "beginner-reader.rkt" "deinprogramm" "sdp")((modname animal) (read-case-sensitive #f) (teachpacks ()) (deinprogramm-settings #(#f write repeating-decimal #f #t none explicit #f ())))
-; Tiere auf dem texanischen Highway
+; Ein Tier auf dem texanischen Highway ist eins der folgenden:
+; - Gürteltier - ODER -
+; - Papagei
 
 ; Ein Gürteltier hat folgende Eigenschaft:
 ; - lebendig oder tot?
@@ -90,3 +92,28 @@ class Dillo {
 ; - Suche nach define "ganz außen" ("global")
 ; wenn das nicht klappt:
 ; - muß es eine importierte Bindung
+
+; Ein Papagei hat folgende Eigenschaften:
+; - Satz
+; - Gewicht
+(define-record parrot
+  make-parrot
+  (parrot-sentence string)
+  (parrot-weight number))
+
+; Begrüßungspapagei, 1kg
+(define parrot1 (make-parrot "Hello!" 1))
+; Verabschiedungspapagei, 2kg
+(define parrot2 (make-parrot "Goodbye!" 2))
+
+; Papagei überfahren
+(: run-over-parrot (parrot -> parrot))
+
+(check-expect (run-over-parrot parrot1)
+              (make-parrot "" 1))
+(check-expect (run-over-parrot parrot2)
+              (make-parrot "" 2))
+
+(define run-over-parrot
+  (lambda (parrot)
+    (make-parrot "" (parrot-weight parrot))))
