@@ -293,8 +293,7 @@ class Parrot extends { ... }
 
 ; Funktion auf alle Elemente einer Liste an
 ;(: map-list ((number -> number) list-of-numbers -> list-of-numbers))
-(: map-list ((%element1 -> %element2) (list-of %element1)
-                                    -> (list-of %element2)))
+(: map-list ((%a -> %b) (list-of %a) -> (list-of %b)))
 ; %element: Signaturvariable, "jedesmal anders"
 
 ; mehr als ein Pfeil in der Signatur:
