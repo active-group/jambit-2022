@@ -247,3 +247,12 @@ class Parrot extends { ... }
         (list-product (rest list)))))))
 
 ; Alle Elemente einer Liste inkrementieren
+(: inc-list (list-of-numbers -> list-of-numbers))
+
+(check-expect (inc-list list4)
+              (cons 3 (cons 4 (cons 8 (cons 6 empty)))))
+
+(define inc-list
+  (lambda (list)
+    ...))
+
