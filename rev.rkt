@@ -24,6 +24,8 @@
       ((empty? list) acc)
       ((cons? list)
        ; kein Kontext, braucht keinen Speicherplatz
+       ; tail call
+       ; endrekursiver Aufruf
        (rev* (rest list) (cons (first list) acc))))))
 
 (rev* (list 1 2 3) empty)
