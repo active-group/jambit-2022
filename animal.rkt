@@ -284,7 +284,7 @@ class Parrot extends { ... }
 (: map-list ((number -> number) list-of-numbers -> list-of-numbers))
 ; mehr als ein Pfeil in der Signatur:
 ; Higher-Order-Funktion
-; Funktion höherer Funktion
+; Funktion höherer Ordnung
 
 (check-expect (map-list inc list4)
               (cons 3 (cons 4 (cons 8 (cons 6 empty)))))
