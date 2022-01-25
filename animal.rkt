@@ -194,3 +194,12 @@ class Parrot extends { ... }
   cons?
   (first number)
   (rest list-of-numbers))
+
+; 1elementige Liste: 7
+(define list1 (cons 7 empty))
+; 2elementige Liste: 7 5
+(define list2 (cons 7 (cons 5 empty)))
+; 3elementige Liste: 3 7 5
+(define list3 (cons 3 (cons 7 (cons 5 empty))))
+; 4elementige Liste: 2 3 7 5
+(define list4 (cons 2 list3))
