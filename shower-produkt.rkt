@@ -7,5 +7,8 @@
 ; bei Shampoo: Farbe und Haartyp
 ; Duschgel besteht zu gleichen Teilen aus Shampoo und Seife
 
-; Bonus - 4. Duschprodukt:
+; 4. Duschprodukt:
 ; Mixtur aus zwei Duschprodukten, mit prozentualen Anteilen
+
+; Schreibe eine Funktion, die den Seifenanteil eines Duschprodukts
+; ermittelt!
