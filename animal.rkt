@@ -245,3 +245,5 @@ class Parrot extends { ... }
        (* 
         (first list)
         (list-product (rest list)))))))
+
+; Alle Elemente einer Liste inkrementieren
