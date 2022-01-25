@@ -23,6 +23,7 @@
     (cond
       ((empty? list) acc)
       ((cons? list)
+       ; kein Kontext, braucht keinen Speicherplatz
        (rev* (rest list) (cons (first list) acc))))))
 
 (rev* (list 1 2 3) empty)
