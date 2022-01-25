@@ -176,6 +176,8 @@ class Parrot extends { ... }
 ; - die leere Liste
 ; - eine Cons-Liste bestehend aus erstem Element und Rest-Liste
 ;                                                         ^^^^^ Selbstbezug
+(: list-of (signature -> signature))
+
 (define list-of
   (lambda (element)
     (signature
@@ -196,7 +198,7 @@ class Parrot extends { ... }
   cons
   cons?
   (first element)
-  (rest list-of-numbers))
+  (rest (list-of element)))
 
 ; (cons-list-of number)
 ; (cons-list-of animal)
@@ -210,8 +212,11 @@ class Parrot extends { ... }
 ; 4elementige Liste: 2 3 7 5
 (define list4 (cons 2 list3))
 
+(define list-of-numbers
+  (signature (list-of number)))
+
 ; Elemente einer Liste addieren
-(: list-sum (list-of-numbers -> number))
+(: list-sum ((list-of number) -> number))
 
 (check-expect (list-sum list4) 17)
 
@@ -287,7 +292,11 @@ class Parrot extends { ... }
 (define double (lambda (x) (* 2 x)))
 
 ; Funktion auf alle Elemente einer Liste an
-(: map-list ((number -> number) list-of-numbers -> list-of-numbers))
+;(: map-list ((number -> number) list-of-numbers -> list-of-numbers))
+(: map-list ((%element -> %element) (list-of %element)
+                                    -> (list-of %element)))
+; %element: Signaturvariable, "jedesmal anders"
+
 ; mehr als ein Pfeil in der Signatur:
 ; Higher-Order-Funktion
 ; Funktion höherer Ordnung
@@ -306,6 +315,7 @@ class Parrot extends { ... }
         (f (first list))
         (map-list f (rest list)))))))
 
+(: highway (list-of animal))
 (define highway (cons dillo1
                       (cons dillo2
                             (cons parrot1
