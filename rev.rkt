@@ -25,7 +25,7 @@
       ((cons? list)
        (rev* (rest list) (cons (first list) acc))))))
 
-(rev* (list 1 2 3))
+(rev* (list 1 2 3) empty)
 
 ; Element an Ende der Liste hängen
 (: add-to-end ((list-of %a) %a -> (list-of %a)))
