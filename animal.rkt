@@ -254,5 +254,28 @@ class Parrot extends { ... }
 
 (define inc-list
   (lambda (list)
-    ...))
+    (cond
+      ((empty? list) empty)
+      ((cons? list)
+       (cons
+        (inc (first list))
+        (inc-list (rest list)))))))
 
+(define inc (lambda (x) (+ 1 x)))
+
+; Alle Elemente einer Liste verdoppeln
+(: double-list (list-of-numbers -> list-of-numbers))
+
+(check-expect (double-list list4)
+              (cons 4 (cons 6 (cons 14 (cons 10 empty)))))
+
+(define double-list
+  (lambda (list)
+    (cond
+      ((empty? list) empty)
+      ((cons? list)
+       (cons
+        (double (first list))
+        (double-list (rest list)))))))
+
+(define double (lambda (x) (* 2 x)))
