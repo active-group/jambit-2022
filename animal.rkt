@@ -203,3 +203,45 @@ class Parrot extends { ... }
 (define list3 (cons 3 (cons 7 (cons 5 empty))))
 ; 4elementige Liste: 2 3 7 5
 (define list4 (cons 2 list3))
+
+; Elemente einer Liste addieren
+(: list-sum (list-of-numbers -> number))
+
+(check-expect (list-sum list4) 17)
+
+; Schablone
+#;(define list-sum
+  (lambda (list)
+    (cond
+      ((empty? list) ...)
+      ((cons? list)
+       ...
+       (first list)
+       (list-sum (rest list))
+       ...
+       ))))
+    
+
+(define list-sum
+  (lambda (list)
+    (cond
+      ((empty? list) 0)
+      ((cons? list)
+       (+
+        (first list)
+        (list-sum (rest list)))))))
+    
+
+; Zahlen einer Liste multiplizieren
+(: list-product (list-of-numbers -> number))
+
+(check-expect (list-product list4) 210)
+
+(define list-product
+  (lambda (list)
+    (cond
+      ((empty? list) 1)
+      ((cons? list)
+       (* 
+        (first list)
+        (list-product (rest list)))))))
