@@ -11,7 +11,7 @@
     (cond
       ((empty? list) empty)
       ((cons? list)
-       (add-to-end
+       (add-to-end ; Kontext, verbraucht zur Laufzeit Speicherplatz
         (rev (rest list))
         (first list))))))
 
