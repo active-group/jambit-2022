@@ -29,4 +29,5 @@
        (cons
         (first list)
         (add-to-end (rest list) el))))))
-  
+
+; n + (n - 1) + ... + 1 = n (n - 1) / 2 = n^2 + ...
