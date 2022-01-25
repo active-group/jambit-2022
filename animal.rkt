@@ -176,8 +176,11 @@ class Parrot extends { ... }
 ; - die leere Liste
 ; - eine Cons-Liste bestehend aus erstem Element und Rest-Liste
 ;                                                         ^^^^^ Selbstbezug
-(define list-of-numbers
-  (signature (mixed empty-list cons-list)))
+(define list-of
+  (lambda (element)
+    (signature
+     (mixed empty-list
+            (cons-list-of element)))))
 
 ; zunächst: Listen von Zahlen
 (define-record empty-list
@@ -189,11 +192,14 @@ class Parrot extends { ... }
 ; Eine Cons-Liste besteht aus:
 ; - erstes Element
 ; - Rest-Liste
-(define-record cons-list
+(define-record (cons-list-of element)
   cons
   cons?
-  (first number)
+  (first element)
   (rest list-of-numbers))
+
+; (cons-list-of number)
+; (cons-list-of animal)
 
 ; 1elementige Liste: 7
 (define list1 (cons 7 empty))
@@ -299,3 +305,8 @@ class Parrot extends { ... }
        (cons
         (f (first list))
         (map-list f (rest list)))))))
+
+(define highway (cons dillo1
+                      (cons dillo2
+                            (cons parrot1
+                                  (cons parrot2 empty)))))
