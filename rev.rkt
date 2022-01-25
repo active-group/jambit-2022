@@ -26,6 +26,7 @@
        ; kein Kontext, braucht keinen Speicherplatz
        ; tail call
        ; endrekursiver Aufruf
+       ; JVM: auch endrekursiver Aufruf verbraucht Platz
        (rev* (rest list) (cons (first list) acc))))))
 
 (rev* (list 1 2 3) empty)
