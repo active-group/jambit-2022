@@ -80,7 +80,7 @@
 
 ; Schablone
 
-(define product-soap-ratio
+#;(define product-soap-ratio
   (lambda (product)
     (cond
       ((soap? product) ...)
@@ -93,4 +93,16 @@
        (product-soap-ratio (mixture-product-2 product))
        ...))))
 
+
+(define product-soap-ratio
+  (lambda (product)
+    (cond
+      ((soap? product) 1)
+      ((shampoo? product) 0)
+      ((shower-gel? product) 0.5)
+      ((mixture? product)
+       (+ (* (mixture-ratio-1 product)
+             (product-soap-ratio (mixture-product-1 product)))
+          (* (mixture-ratio-2 product)
+             (product-soap-ratio (mixture-product-2 product))))))))
 
