@@ -257,6 +257,17 @@ class Parrot extends { ... }
         (first list)
         (list-product (rest list)))))))
 
+; (: +       (number number -> number))
+; (: *       (number number -> number))
+; (: overlay (image image   -> image))
+; (: beside  (image image   -> image))
+
+; "0 ist neutrales Element von +"
+; 0 + x == x + 0 == x für alle x
+; "1 ist neutrales Element von *"
+; 1 * x == x * 1 == x
+
+
 (: list-fold (%b (%a %b -> %b) (list-of %a) -> %b))
 
 (define list-fold
