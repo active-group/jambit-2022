@@ -257,6 +257,17 @@ class Parrot extends { ... }
         (first list)
         (list-product (rest list)))))))
 
+(: list-fold (%b (%a %b -> %b) (list-of %a) -> %b))
+
+(define list-fold
+  (lambda (neutral-element operator list)
+    (cond
+      ((empty? list) neutral-element)
+      ((cons? list)
+       (operator
+        (first list)
+        (list-fold neutral-element operator (rest list)))))))
+
 ; Alle Elemente einer Liste inkrementieren
 (: inc-list (list-of-numbers -> list-of-numbers))
 
