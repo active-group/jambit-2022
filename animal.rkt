@@ -323,3 +323,6 @@ class Parrot extends { ... }
 ; (: dillo-alive? (dillo -> boolean))
 (define dillos (cons dillo1 (cons dillo2 empty)))
 
+; Alle geraden Zahlen einer Liste extrahieren
+; Alle positiven Zahlen einer Liste extrahieren
+; über diesen beiden abstrahieren
