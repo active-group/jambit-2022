@@ -78,6 +78,8 @@
 ; Seifenanteil eines Produkts berechnen
 (: product-soap-ratio (product -> rational))
 
+(check-expect (product-soap-ratio mix1) 0.2)
+
 ; Schablone
 
 #;(define product-soap-ratio
