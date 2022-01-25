@@ -1,6 +1,6 @@
 ;; Die ersten drei Zeilen dieser Datei wurden von DrRacket eingefügt. Sie enthalten Metadaten
 ;; über die Sprachebene dieser Datei in einer Form, die DrRacket verarbeiten kann.
-#reader(lib "beginner-reader.rkt" "deinprogramm" "sdp")((modname animal) (read-case-sensitive #f) (teachpacks ()) (deinprogramm-settings #(#f write repeating-decimal #f #t none explicit #f ())))
+#reader(lib "vanilla-reader.rkt" "deinprogramm" "sdp")((modname animal) (read-case-sensitive #f) (teachpacks ()) (deinprogramm-settings #(#f write repeating-decimal #f #t none explicit #f ())))
 ; Ein Tier auf dem texanischen Highway ist eins der folgenden:
 ; - Gürteltier - ODER -
 ; - Papagei
@@ -176,25 +176,25 @@ class Parrot extends { ... }
 ; - die leere Liste
 ; - eine Cons-Liste bestehend aus erstem Element und Rest-Liste
 ;                                                         ^^^^^ Selbstbezug
-(: list-of (signature -> signature))
+#;(: list-of (signature -> signature))
 
-(define list-of
+#;(define list-of
   (lambda (element)
     (signature
      (mixed empty-list
             (cons-list-of element)))))
 
 ; zunächst: Listen von Zahlen
-(define-record empty-list
+#;(define-record empty-list
   make-empty
   empty?)
 
-(define empty (make-empty))
+#;(define empty (make-empty))
 
 ; Eine Cons-Liste besteht aus:
 ; - erstes Element
 ; - Rest-Liste
-(define-record (cons-list-of element)
+#;(define-record (cons-list-of element)
   cons
   cons?
   (first element)
