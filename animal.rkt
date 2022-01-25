@@ -257,6 +257,23 @@ class Parrot extends { ... }
         (first list)
         (list-product (rest list)))))))
 
+; algebraische Struktur:
+; - Menge (number, image) / Signatur / Typ
+; - Operation(en) mit bestimmter Signatur
+; - Gleichungen
+
+; Menge / Signatur s
+; (: op (s s -> s))
+; (op a (op b c)) == (op (op a b) c)
+
+; Assoziativgesetz:
+; a + (b + c) = (a + b) + c
+; a * (b * c) = (a * b) * c
+
+; ^^^ Halbgruppe
+
+; Halbgruppe + neutrales Element = Monoid
+
 ; (: +       (number number -> number))
 ; (: *       (number number -> number))
 ; (: overlay (image image   -> image))
@@ -271,13 +288,13 @@ class Parrot extends { ... }
 (: list-fold (%b (%a %b -> %b) (list-of %a) -> %b))
 
 (define list-fold
-  (lambda (neutral-element operator list)
+  (lambda (for-empty for-cons list)
     (cond
-      ((empty? list) neutral-element)
+      ((empty? list) for-empty)
       ((cons? list)
-       (operator
+       (for-cons
         (first list)
-        (list-fold neutral-element operator (rest list)))))))
+        (list-fold for-empty for-cons (rest list)))))))
 
 ; Alle Elemente einer Liste inkrementieren
 (: inc-list (list-of-numbers -> list-of-numbers))
