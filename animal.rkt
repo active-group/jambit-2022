@@ -293,8 +293,8 @@ class Parrot extends { ... }
 
 ; Funktion auf alle Elemente einer Liste an
 ;(: map-list ((number -> number) list-of-numbers -> list-of-numbers))
-(: map-list ((%element -> %element) (list-of %element)
-                                    -> (list-of %element)))
+(: map-list ((%element1 -> %element2) (list-of %element1)
+                                    -> (list-of %element2)))
 ; %element: Signaturvariable, "jedesmal anders"
 
 ; mehr als ein Pfeil in der Signatur:
@@ -320,3 +320,7 @@ class Parrot extends { ... }
                       (cons dillo2
                             (cons parrot1
                                   (cons parrot2 empty)))))
+
+; (: dillo-alive? (dillo -> boolean))
+(define dillos (cons dillo1 (cons dillo2 empty)))
+
