@@ -279,3 +279,23 @@ class Parrot extends { ... }
         (double-list (rest list)))))))
 
 (define double (lambda (x) (* 2 x)))
+
+; Funktion auf alle Elemente einer Liste an
+(: map-list ((number -> number) list-of-numbers -> list-of-numbers))
+; mehr als ein Pfeil in der Signatur:
+; Higher-Order-Funktion
+; Funktion höherer Funktion
+
+(check-expect (map-list inc list4)
+              (cons 3 (cons 4 (cons 8 (cons 6 empty)))))
+(check-expect (map-list double list4)
+              (double-list list4))
+
+(define map-list
+  (lambda (f list)
+    (cond
+      ((empty? list) empty)
+      ((cons? list)
+       (cons
+        (f (first list))
+        (map-list f (rest list)))))))
