@@ -202,10 +202,17 @@ listMap :: (a -> b) -> [a] -> [b]
 listMap f [] = []
 listMap f (x:xs) = (f x) : (listMap f xs) 
 
+data Optional a =
+    Absent
+  | Present a
+  deriving Show
+
 -- Index eines Elements in einer Liste berechnen
-listIndex :: a -> [a] -> Integer
-listIndex a [] = undefined
+listIndex :: a -> [a] -> Optional Integer
+listIndex a [] = Absent
 listIndex a (x:xs) = 
     if undefined -- a == x
-    then 0
-    else  1 + listIndex a xs
+    then Present 0
+    else  case listIndex a xs of
+            Absent -> Absent
+            Present index -> Present (index + 1)
