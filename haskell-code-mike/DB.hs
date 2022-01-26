@@ -41,7 +41,9 @@ p1 = Put "Mike" 50 (\() ->
 
 runDB :: Map String Integer -> DB a -> a
 runDB mp (Get key cont) =
-     let value = mp ! key
-     in cont value
-runDB mp (Put key value cont) = undefined 
+    let value = mp ! key
+    in runDB mp (cont value)
+runDB mp (Put key value cont) =
+    let mp' = Map.insert key value mp
+    in cont ()
 runDB mp (Return result) = result
