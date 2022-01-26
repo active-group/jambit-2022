@@ -201,3 +201,5 @@ listSum (first:rest) = first + (listSum rest)
 listMap :: (a -> b) -> [a] -> [b]
 listMap f [] = []
 listMap f (x:xs) = (f x) : (listMap f xs) 
+
+-- Index eines Elements 
