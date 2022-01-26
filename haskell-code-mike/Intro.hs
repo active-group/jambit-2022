@@ -165,8 +165,13 @@ g x = let y = x + 1
 o :: (b -> c) -> (a -> b) -> (a -> c)
 o f g = \ a -> f (g a)
 
+{-
 data ListOfIntegers =
     Empty
   | Cons Integer ListOfIntegers
   deriving Show
+-}
 
+data ListOf a =
+    Empty
+  | Cons a (ListOf a)
