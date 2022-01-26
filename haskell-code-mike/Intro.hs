@@ -161,5 +161,6 @@ g x = let y = x + 1
 -- Transitivität
 -- a R b /\ b R c => a R c
 
+-- Funktionskomposition
 o :: (b -> c) -> (a -> b) -> (a -> c)
 o f g = \ a -> f (g a)
