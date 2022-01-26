@@ -213,7 +213,9 @@ listSum :: [Integer] -> Integer
 listSum [] = 0
 listSum (first:rest) = first + (listSum rest)
 
-listMap :: (a -> b) -> [a] -> [b]
+type List a = [a]
+
+listMap :: (a -> b) -> List a -> List b
 listMap f [] = []
 listMap f (x:xs) = (f x) : (listMap f xs) 
 
@@ -221,6 +223,13 @@ data Optional a =
     Absent
   | Present a
   deriving Show
+
+optionalMap :: (a -> b) -> Optional a -> Optional b
+optionalMap f Absent = Absent
+optionalMap f (Present a) = Present (f a)
+
+class Mappable m where
+    mmap :: (a -> b) -> Optional a -> Optional b
 
 -- =>: Implikation geht in die andere Richtung
 instance Eq a => Eq (Optional a) where
@@ -240,10 +249,12 @@ listIndex a [] = Absent
 listIndex a (x:xs) = 
     if a == x
     then Present 0
-    else  case listIndex a xs of
+    else optionalMap (1 + ) (listIndex a xs)
+{-              
+         case listIndex a xs of
             Absent -> Absent
             Present index -> Present (index + 1)
-
+-}
 -- >>> listIndex 5 [1,2,3]
 -- Absent
 
