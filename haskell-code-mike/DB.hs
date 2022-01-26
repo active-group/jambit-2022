@@ -27,7 +27,7 @@ p1 = [Put "Mike" 50, Get "Mike", Return "foo"]
 -}
 
 data DB a =
-    Get String (Integer -> DB a)
+    Get String (Integer -> DB a) -- "continuation"
   | Put String Integer (() -> DB a)
   | Return a
 
@@ -38,3 +38,8 @@ p1 = Put "Mike" 50 (\() ->
      Get "Mike" (\ y ->
      Return (show (x + y))))))
 
+
+runDB :: Map String Integer -> DB a -> a
+runDB mp (Get key cont) = undefined 
+runDB mp (Put key value cont) = undefined 
+runDB mp (Return result) = undefined
