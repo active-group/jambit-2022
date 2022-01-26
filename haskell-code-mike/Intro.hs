@@ -228,8 +228,14 @@ optionalMap :: (a -> b) -> Optional a -> Optional b
 optionalMap f Absent = Absent
 optionalMap f (Present a) = Present (f a)
 
-class Mappable m where
-    mmap :: (a -> b) -> Optional a -> Optional b
+class Functor m where
+    mmap :: (a -> b) -> m a -> m b
+
+instance Functor Optional where
+    mmap = optionalMap
+
+instance Functor [] where
+    mmap = listMap
 
 -- =>: Implikation geht in die andere Richtung
 instance Eq a => Eq (Optional a) where
