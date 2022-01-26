@@ -270,4 +270,8 @@ instance Semigroup [a] where
     op list1 list2 = list1 ++ list2
 
 class Semigroup a => Monoid a where
+    -- op neutral x == op x neutral == x
     neutral :: a
+
+instance Monoid [a] where
+    neutral = []
