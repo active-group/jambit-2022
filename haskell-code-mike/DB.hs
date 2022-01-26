@@ -1,6 +1,6 @@
 module DB where
 
-import Data.Map.Strict as Data.Map
+import Data.Map.Strict as Map
 import Data.Map.Strict (Map, (!))
 
 {-
