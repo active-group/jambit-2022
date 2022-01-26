@@ -220,7 +220,7 @@ data Optional a =
   | Present a
   deriving Show
 
-instance Eq (Optional a) where
+instance Eq a => Eq (Optional a) where
     Absent == Absent = True 
     (Present x) == (Present y) = x == y
 
