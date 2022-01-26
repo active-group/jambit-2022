@@ -1,5 +1,7 @@
 module Intro where
 
+import Prelude hiding (Monoid, Semigroup, Functor)
+
 x :: Integer
 x = 7
 
