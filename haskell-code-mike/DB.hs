@@ -41,6 +41,7 @@ p1 = Put "Mike" 50 (\() ->
 
 runDB :: Map String Integer -> DB a -> a
 runDB mp (Get key cont) =
-     
+     let value = mp ! key
+     in 
 runDB mp (Put key value cont) = undefined 
 runDB mp (Return result) = result
