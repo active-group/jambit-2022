@@ -205,4 +205,7 @@ listMap f (x:xs) = (f x) : (listMap f xs)
 -- Index eines Elements in einer Liste berechnen
 listIndex :: a -> [a] -> Integer
 listIndex a [] = undefined
-listIndex a (x:xs) = ... x ... (listIndex a xs) ...
+listIndex a (x:xs) = 
+    if undefined -- a == x
+    then 0
+    else  1 + listIndex a xs
