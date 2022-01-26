@@ -262,4 +262,9 @@ data Maybe a = Nothing | Just a
 -- - op :: a -> a -> a
 -- Assoziativgesetz
 class Semigroup a where
+    -- Assoziativität
+    -- op a (op b c) == op (op a b) c
     op :: a -> a -> a
+
+instance Semigroup [a] where
+    op list1 list2 = list1 ++ list2
