@@ -190,6 +190,7 @@ listSum (Cons first rest) = first + (listSum rest)
 -- leere Liste: []
 
 -- >>> 1 : (2 : (3 : []))
+-- [1,2,3]
 
 -- >>> listSum [1,2,3,4,5]
 -- 15
