@@ -57,8 +57,10 @@ splice (Put key value cont) next =
                     splice (cont ()) next)
 splice (Return result) next = next result
 
+instance Functor DB where
+
 instance Applicative DB where
-    
+
 instance Monad DB where
     (>>=) = splice
     return = Return
@@ -69,6 +71,12 @@ p1' = put "Mike" 50 `splice` (\() ->
       put "Mike" (x+1) `splice` (\() ->
       get "Mike" `splice` (\y ->
       Return (show (x + y))))))
+
+p1'' = do put "Mike" 50
+          x <- get "Mike"
+          put "Mike" (x+1)
+          y <- get "Mike"
+          return (show (x + y))
 
 runDB :: Map String Integer -> DB a -> a
 runDB mp (Get key cont) =
