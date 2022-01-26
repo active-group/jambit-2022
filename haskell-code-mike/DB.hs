@@ -62,7 +62,9 @@ instance Functor DB where
 instance Applicative DB where
 
 instance Monad DB where
+    -- bind, flatMap
     (>>=) = splice
+    -- unit, pure
     return = Return
 
 p1' :: DB String
