@@ -244,9 +244,12 @@ listIndex a (x:xs) =
 
 -- >>> listIndex 5 [1,2,3]
 -- Absent
+
 -- >>> listIndex 5 [1,2,3,4,5,6]
 -- Present 4
 
 {-
 data Maybe a = Nothing | Just a
 -}
+
+-- sinnvolle Typklassen: universelle Abstraktionen, domänenunabhängig, Mathematik
