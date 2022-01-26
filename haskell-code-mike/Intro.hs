@@ -278,3 +278,12 @@ instance Monoid [a] where
 
 -- Instanzen für Monoid (Optional a)
 --           und Monoid (a, b)
+
+instance Semigroup a => Semigroup (Optional a) where
+    op Absent Absent = Absent 
+    op Absent (Present x) = Present x 
+    op (Present x) Absent = Present x 
+    op (Present x) (Present y) = Present (op x y)
+
+instance Semigroup a => Monoid (Optional a) where
+    neutral = Absent
