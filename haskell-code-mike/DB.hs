@@ -38,6 +38,23 @@ p1 = Put "Mike" 50 (\() ->
      Get "Mike" (\ y ->
      Return (show (x + y))))))
 
+get :: String -> DB Integer 
+get key = Get key Return -- (\ value -> Return value)
+
+put :: String -> Integer -> DB ()
+put key value = Put key value Return
+
+c1 :: DB ()
+c1 = put "Mike" 50
+c2 :: DB Integer
+c2 = get "Mike"
+
+splice :: DB a -> (a -> DB b) -> DB b
+splice (Get key cont) next = undefined 
+splice (Put key value cont) next = 
+    Put key value 
+splice (Return result) next = next result
+
 
 runDB :: Map String Integer -> DB a -> a
 runDB mp (Get key cont) =
