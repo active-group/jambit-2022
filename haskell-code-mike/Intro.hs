@@ -220,6 +220,7 @@ data Optional a =
   | Present a
   deriving Show
 
+-- =>: Implikation geht in die andere Richtung
 instance Eq a => Eq (Optional a) where
     Absent == Absent = True 
     (Present x) == (Present y) = x == y
