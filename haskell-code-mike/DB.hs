@@ -45,5 +45,5 @@ runDB mp (Get key cont) =
     in runDB mp (cont value)
 runDB mp (Put key value cont) =
     let mp' = Map.insert key value mp
-    in cont ()
+    in runDB mp' (cont ())
 runDB mp (Return result) = result
