@@ -23,3 +23,6 @@ p1 = [Put "Mike" 50, Get "Mike", Return "foo"]
 -- ^^^ können Dingen keinen Namen geben
 -}
 
+data DB a =
+    Get String (Integer -> DB a)
+    Put String Integer (() -> DB a)
