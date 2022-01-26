@@ -191,7 +191,8 @@ listSum (Cons first rest) = first + (listSum rest)
 
 -- >>> 1 : (2 : (3 : []))
 
-
+-- >>> listSum [1,2,3,4,5]
+-- 15
 listSum :: [Integer] -> Integer
 listSum [] = 0
 listSum (first:rest) = first + (listSum rest)
