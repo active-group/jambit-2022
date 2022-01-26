@@ -58,8 +58,9 @@ splice (Put key value cont) next =
 splice (Return result) next = next result
 
 instance Functor DB where
-    fmap f (Get key cont) = undefined 
-    fmap f (Put key value cont) = undefined 
+    fmap f (Get key cont) =
+        Get key (\ value -> fmap f (cont value))
+    fmap f (Put key value cont) = Put key value (\() -> fmap f (cont ()))
     fmap f (Return result) = Return (f result)
 
 instance Applicative DB where
