@@ -217,7 +217,7 @@ data Optional a =
 listIndex :: a -> [a] -> Optional Integer
 listIndex a [] = Absent
 listIndex a (x:xs) = 
-    if undefined -- a == x
+    if a == x
     then Present 0
     else  case listIndex a xs of
             Absent -> Absent
