@@ -50,12 +50,19 @@ c2 :: DB Integer
 c2 = get "Mike"
 
 splice :: DB a -> (a -> DB b) -> DB b
-splice (Get key cont) next = undefined 
+splice (Get key cont) next = 
+    Get key (\ value -> splice (cont value) next)
 splice (Put key value cont) next = 
     Put key value (\() ->
-        cont ()
+                    splice (cont ()) next)
 splice (Return result) next = next result
 
+p1' :: DB String
+p1' = put "Mike" 50 `splice` (\() ->
+      get "Mike" `splice` (\x ->
+      put "Mike" (x+1) `splice` (\() ->
+      get "Mike" `splice` (\y ->
+      Return (show (x + y))))))
 
 runDB :: Map String Integer -> DB a -> a
 runDB mp (Get key cont) =
