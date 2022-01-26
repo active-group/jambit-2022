@@ -1,5 +1,8 @@
 module DB where
 
+import Data.Map.Strict as Data.Map
+import Data.Map.Strict (Map, (!))
+
 {-
 DSL für Datenbank-Programme:
 
