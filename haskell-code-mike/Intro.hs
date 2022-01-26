@@ -207,11 +207,17 @@ data Optional a =
   | Present a
   deriving Show
 
+-- >>> :type (==)
+-- (==) :: Eq a => a -> a -> Bool
+
+-- Eq a: Constraint
+-- "Eq a =>": a muß ein Typ sein, der die Gleichheit unterstützt
+
 -- Index eines Elements in einer Liste berechnen
 listIndex :: a -> [a] -> Optional Integer
 listIndex a [] = Absent
 listIndex a (x:xs) = 
-    if a == x
+    if undefined -- a == x
     then Present 0
     else  case listIndex a xs of
             Absent -> Absent
