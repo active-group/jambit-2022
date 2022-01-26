@@ -188,4 +188,10 @@ listSum (Cons first rest) = first + (listSum rest)
 -}
 
 -- leere Liste: []
+
+-- >>> 1 : (2 : (3 : []))
+
+
 listSum :: [Integer] -> Integer
+listSum [] = 0
+listSum (first:rest) = first + (listSum rest)
