@@ -223,6 +223,7 @@ data Optional a =
 instance Eq a => Eq (Optional a) where
     Absent == Absent = True 
     (Present x) == (Present y) = x == y
+    _ == _ = False
 
 -- >>> :type (==)
 -- (==) :: Eq a => a -> a -> Bool
