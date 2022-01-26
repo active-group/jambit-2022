@@ -222,3 +222,12 @@ listIndex a (x:xs) =
     else  case listIndex a xs of
             Absent -> Absent
             Present index -> Present (index + 1)
+
+-- >>> listIndex 5 [1,2,3]
+-- Absent
+-- >>> listIndex 5 [1,2,3,4,5,6]
+-- Present 4
+
+{-
+data Maybe a = Nothing | Just a
+-}
