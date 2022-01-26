@@ -26,3 +26,10 @@ https://download.racket-lang.org/
 Da sollte jetzt eine Meldung erscheinen, dass ein Docker-Image gebaut
 wird.  Das kann eine Weile dauern, sollte aber ohne Fehlermeldung
 vonstatten gehen.
+
+
+## Literatur
+
+- Michael Sperber, Herbert Klaeren: [Schreibe Dein Programm!](https://www.deinprogramm.de)
+- Sandy Maguire: [Algebra-Driven Design](https://algebradriven.design/
+- Chiusano, Bjarnasson: [Functional Programming in Scala](https://www.manning.com/books/functional-programming-in-scala)
