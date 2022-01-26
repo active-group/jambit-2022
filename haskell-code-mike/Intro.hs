@@ -157,3 +157,9 @@ g x = let y = x + 1
 -- 1. Datenanalyse + Code
 -- 2. Schreibe eine Funktion, die für einen Punkt ermittelt, ob dieser
 --    innerhalb oder außerhalb der geometrischen Figur liegt.
+
+-- Transitivität
+-- a R b /\ b R c => a R c
+
+o :: (b -> c) -> (a -> b) -> (a -> c)
+o f g = \ a -> f (g a)
