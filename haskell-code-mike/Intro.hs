@@ -25,7 +25,10 @@ class Eq a where
 
 -- Instanz, denkt "Implementierung"
 instance Eq Pet where
-    
+  (==) Dog Dog = True 
+  (==) Cat Cat = True 
+  (==) Snake Snake = True 
+  (==) _ _ = False    
 
 -- Ist ein Haustier niedlich?
 isCute :: Pet -> Bool 
