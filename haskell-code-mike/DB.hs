@@ -57,6 +57,8 @@ splice (Put key value cont) next =
                     splice (cont ()) next)
 splice (Return result) next = next result
 
+instance Applicative DB where
+    
 instance Monad DB where
     (>>=) = splice
     return = Return
