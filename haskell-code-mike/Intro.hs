@@ -255,3 +255,11 @@ data Maybe a = Nothing | Just a
 -}
 
 -- sinnvolle Typklassen: universelle Abstraktionen, domänenunabhängig, Mathematik
+
+
+-- Halbgruppe:
+-- - Typ a
+-- - op :: a -> a -> a
+-- Assoziativgesetz
+class Semigroup a where
+    op :: a -> a -> a
