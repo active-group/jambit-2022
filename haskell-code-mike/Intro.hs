@@ -187,4 +187,5 @@ listSum Empty = 0
 listSum (Cons first rest) = first + (listSum rest)
 -}
 
+-- leere Liste: []
 listSum :: [Integer] -> Integer
