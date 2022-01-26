@@ -57,6 +57,10 @@ splice (Put key value cont) next =
                     splice (cont ()) next)
 splice (Return result) next = next result
 
+instance Monad DB where
+    (>>=) = splice
+    return = Return
+
 p1' :: DB String
 p1' = put "Mike" 50 `splice` (\() ->
       get "Mike" `splice` (\x ->
