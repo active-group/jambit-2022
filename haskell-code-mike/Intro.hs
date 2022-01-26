@@ -275,3 +275,6 @@ class Semigroup a => Monoid a where
 
 instance Monoid [a] where
     neutral = []
+
+-- Instanzen für Monoid (Optional a)
+--           und Monoid (a, b)
