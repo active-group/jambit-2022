@@ -57,13 +57,32 @@ splice (Put key value cont) next =
                     splice (cont ()) next)
 splice (Return result) next = next result
 
+{-
+  fmap ::       (a -> b)   -> f a -> f b
+  (<*>) ::    f (a -> b)   -> f a -> f b
+  flip (>>=) :: (a -> f b) -> f a -> f b
+  (>>=) :: f a -> (a -> f b) -> f b
+-}
+
 instance Functor DB where
     fmap f (Get key cont) =
         Get key (\ value -> fmap f (cont value))
     fmap f (Put key value cont) = Put key value (\() -> fmap f (cont ()))
     fmap f (Return result) = Return (f result)
 
+-- Wunsch: fmap2 :: (a -> b -> c) -> f a -> f b -> f c
+-- fmap3, fmap4
+
 instance Applicative DB where
+    pure = Return
+    (<*>) ff fa =
+        ff >>= (\ f -> fmap f fa)
+
+fmap2 :: Applicative f => (a -> b -> c) -> f a -> f b -> f c
+fmap2 f fa fb = (fmap f fa) <*> fb
+fmap3 :: Applicative f => (a -> b -> c -> d) -> f a -> f b -> f c -> f d
+fmap3 f fa fb fc = -- (fmap f fa) <*> fb <*> fc
+  f <$> fa <*> fb <*> fc
 
 instance Monad DB where
     -- bind, flatMap
