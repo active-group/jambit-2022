@@ -172,7 +172,19 @@ data ListOfIntegers =
   deriving Show
 -}
 
+{-
 data ListOf a =
     Empty
   | Cons a (ListOf a)
   deriving Show
+
+-- Schablone
+-- listSum Empty = undefined
+-- listSum (Cons first rest) = first ... (listSum rest)
+
+listSum :: ListOf Integer -> Integer
+listSum Empty = 0
+listSum (Cons first rest) = first + (listSum rest)
+-}
+
+listSum :: [Integer] -> Integer
