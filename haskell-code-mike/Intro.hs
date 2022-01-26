@@ -268,3 +268,6 @@ class Semigroup a where
 
 instance Semigroup [a] where
     op list1 list2 = list1 ++ list2
+
+class Semigroup a => Monoid a where
+    neutral :: a
