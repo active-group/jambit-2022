@@ -175,3 +175,4 @@ data ListOfIntegers =
 data ListOf a =
     Empty
   | Cons a (ListOf a)
+  deriving Show
