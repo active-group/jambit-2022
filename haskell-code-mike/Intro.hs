@@ -17,6 +17,16 @@ data Pet = Dog | Cat | Snake
   deriving Show
 -- data: neuer Datentyp
 
+{-
+-- Typklasse, denkt "Interface"
+class Eq a where
+    (==) :: a -> a -> Bool
+-}
+
+-- Instanz, denkt "Implementierung"
+instance Eq Pet where
+    
+
 -- Ist ein Haustier niedlich?
 isCute :: Pet -> Bool 
 isCute Dog = True
