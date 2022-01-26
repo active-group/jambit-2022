@@ -214,7 +214,7 @@ data Optional a =
 -- "Eq a =>": a muß ein Typ sein, der die Gleichheit unterstützt
 
 -- Index eines Elements in einer Liste berechnen
-listIndex :: a -> [a] -> Optional Integer
+listIndex :: Eq a => a -> [a] -> Optional Integer
 listIndex a [] = Absent
 listIndex a (x:xs) = 
     if a == x
