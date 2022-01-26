@@ -40,6 +40,7 @@ p1 = Put "Mike" 50 (\() ->
 
 
 runDB :: Map String Integer -> DB a -> a
-runDB mp (Get key cont) = undefined 
+runDB mp (Get key cont) =
+     
 runDB mp (Put key value cont) = undefined 
-runDB mp (Return result) = undefined
+runDB mp (Return result) = result
