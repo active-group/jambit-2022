@@ -52,7 +52,8 @@ c2 = get "Mike"
 splice :: DB a -> (a -> DB b) -> DB b
 splice (Get key cont) next = undefined 
 splice (Put key value cont) next = 
-    Put key value 
+    Put key value (\() ->
+        cont ()
 splice (Return result) next = next result
 
 
